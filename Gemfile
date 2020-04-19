@@ -40,5 +40,5 @@ group :test do
 end
 
 gem 'pg', '0.11.0'
-gem 'haml', '3.1.4'
+gem 'haml', '5.0.0'
 gem 'prototype-rails', '~> 3.1'
