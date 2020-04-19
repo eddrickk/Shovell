@@ -1,0 +1,11 @@
+%h1 Stories
+
+%br/
+
+%h2
+  = "Showing #{pluralize(@story.size, 'front page story')}"
+
+= render :partial => 'story', :collection => @story
+
+%br/
+= link_to 'New Story', new_story_path

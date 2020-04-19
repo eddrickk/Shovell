@@ -1,0 +1,33 @@
+%p.notice
+  = notice
+%h2
+  %span#vote_score
+    Score :
+    = @story.votes.size
+  = @story.name
+#vote_history
+  - if @story.votes.empty?
+    %em
+      No shoves yet!
+  - else
+    = render :partial => 'votes/vote', :collection => @story.votes.latest
+%p.submitted_by
+  Submitted by :
+  %span
+    = @story.user.login
+%p
+  %b
+    Link:
+  = @story.link
+- if logged_in?
+  #vote_form
+    = form_tag story_votes_path(@story), :remote => false do
+      = submit_tag 'shove it'
+- else
+  %p
+    %em
+      You would able to vote for this story if you were
+      = link_to 'Logged in', new_session_path
+
+= link_to 'Edit', edit_story_path(@story)
+= link_to 'Back', stories_path

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shovell</title>
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div id="content">
+	<div id="login_logout">
+		<% if @current_user %>
+			Logged in as :
+			<%= @current_user.login %>
+			<em><%= link_to "(Logout)", session_path, :method => :delete %></em>
+		<% else %>
+			<em>Not logged in</em>
+			<%= link_to 'Login', new_session_path %>
+		<% end %>
+	</div>
+	<%= yield %>
+	<ul id="navigation">
+		<li><%= link_to 'Front page stories', stories_path %></li>
+		<li><%= link_to 'Upcoming stories', bin_stories_path %></li>
+		<li><%= link_to 'Submit a new story', new_story_path %></li>
+	</ul>
+</div>
+</body>
+</html>
